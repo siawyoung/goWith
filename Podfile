@@ -23,3 +23,5 @@ pod 'SDWebImage', '~> 3.7'
 
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'Jibber-Framework', '~> 1.1', :configurations => ['Debug']
+
+pod 'Firebase', '>= 2.2.0'

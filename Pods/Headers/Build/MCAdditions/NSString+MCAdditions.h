@@ -1,1 +1,0 @@
-../../../MCAdditions/MCAdditions/Categories/NSString+MCAdditions.h

@@ -1,1 +1,0 @@
-../../../MCAdditions/MCAdditions/Classes/DataSource/MCCollectionViewDataSource.h

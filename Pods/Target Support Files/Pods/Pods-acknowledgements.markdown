@@ -304,6 +304,10 @@ SOFTWARE.
    limitations under the License.
 
 
+## Firebase
+
+https://www.firebase.com/terms/terms-of-service.html
+
 ## ISO8601DateFormatter
 
 Copyright © 2006–2013 Peter Hosey

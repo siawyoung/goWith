@@ -1,1 +1,0 @@
-../../../MCAdditions/MCAdditions/Categories/UIImage+ImageEffects.h

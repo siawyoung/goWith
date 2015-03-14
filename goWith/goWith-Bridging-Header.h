@@ -6,8 +6,6 @@
 #import <Parse/Parse.h>
 #import <JSQMessages.h>
 
-#import <SVWebViewController.h>
-#import <SVModalWebViewController.h>
 
 // Model
 #import "Client.h"
@@ -24,9 +22,11 @@
 #import <UIImage+MCAdditions.h>
 #import <UIColor+MCAdditions.h>
 #import <UIView+MCAdditions.h>
-#import "NSDate+MCCalenderView.h"
 
 //Tinder interface
-#import <DraggableView.h>
-#import <DraggableViewBackground.h>
-#import <OverlayView.h>
+#import "DraggableView.h"
+#import "DraggableViewBackground.h"
+#import "OverlayView.h"
+
+//Firebase
+#import <Firebase/Firebase.h>
