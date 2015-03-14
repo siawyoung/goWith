@@ -1,1 +1,0 @@
-../../../MCAdditions/MCAdditions/Categories/UICollectionView+MCAdditions.h
