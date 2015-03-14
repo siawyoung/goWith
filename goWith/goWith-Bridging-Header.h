@@ -25,3 +25,8 @@
 #import <UIColor+MCAdditions.h>
 #import <UIView+MCAdditions.h>
 #import "NSDate+MCCalenderView.h"
+
+//Tinder interface
+#import <DraggableView.h>
+#import <DraggableViewBackground.h>
+#import <OverlayView.h>
