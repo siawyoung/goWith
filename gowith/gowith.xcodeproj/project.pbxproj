@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17276BA71AB4C75E00FC89AD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17276BA61AB4C75E00FC89AD /* File.swift */; };
+		17276BA91AB4CA6F00FC89AD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17276BA81AB4CA6F00FC89AD /* Message.swift */; };
 		310907461AB44D4100581047 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 310907451AB44D4100581047 /* main.m */; };
 		310907491AB44D4100581047 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 310907481AB44D4100581047 /* AppDelegate.m */; };
 		3109074C1AB44D4100581047 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3109074B1AB44D4100581047 /* ViewController.m */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17276BA61AB4C75E00FC89AD /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		17276BA81AB4CA6F00FC89AD /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		310907401AB44D4100581047 /* gowith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gowith.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		310907441AB44D4100581047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		310907451AB44D4100581047 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 		310907421AB44D4100581047 /* gowith */ = {
 			isa = PBXGroup;
 			children = (
+				31A4687A1AB4BFE900F3F470 /* gowith-Bridging-Header.h */,
 				310907471AB44D4100581047 /* AppDelegate.h */,
 				310907481AB44D4100581047 /* AppDelegate.m */,
 				310907891AB458DB00581047 /* Carousel */,
@@ -169,7 +174,6 @@
 		310907431AB44D4100581047 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				31A4687A1AB4BFE900F3F470 /* gowith-Bridging-Header.h */,
 				310907441AB44D4100581047 /* Info.plist */,
 				310907451AB44D4100581047 /* main.m */,
 				3109078D1AB45AE600581047 /* goWith-Prefix.pch */,
@@ -275,6 +279,8 @@
 			children = (
 				31A4687B1AB4BFEA00F3F470 /* MessagesViewController.swift */,
 				31A4687D1AB4C0DE00F3F470 /* Messages.storyboard */,
+				17276BA61AB4C75E00FC89AD /* File.swift */,
+				17276BA81AB4CA6F00FC89AD /* Message.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -444,6 +450,8 @@
 				310907461AB44D4100581047 /* main.m in Sources */,
 				310907911AB45E6B00581047 /* Destination.m in Sources */,
 				310907851AB44D6500581047 /* User.m in Sources */,
+				17276BA91AB4CA6F00FC89AD /* Message.swift in Sources */,
+				17276BA71AB4C75E00FC89AD /* File.swift in Sources */,
 				310907831AB44D6500581047 /* MCNetworkActivityLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +577,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = gowith/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "gowith/gowith-Bridging-Header.h";
@@ -583,6 +592,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = gowith/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "gowith/gowith-Bridging-Header.h";

@@ -19,7 +19,8 @@ pod 'Parse', '~> 1.6'
 pod 'JGProgressHUD'
 
 pod 'POP+MCAnimate', '~> 2.0'
-pod 'JSQMessagesViewController', '~> 6.0'
+
+pod 'JSQMessagesViewController', '5.2.2'
 pod 'SDWebImage', '~> 3.7'
 
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']

@@ -1,6 +1,6 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  http://www.hexedbits.com
 //
 //
 //  Documentation
@@ -18,6 +18,7 @@
 
 #import "JSQMessagesInputToolbar.h"
 
+#import "JSQMessagesToolbarContentView.h"
 #import "JSQMessagesComposerTextView.h"
 
 #import "JSQMessagesToolbarButtonFactory.h"
@@ -57,9 +58,7 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
     self.jsq_isObserving = NO;
     self.sendButtonOnRight = YES;
     
-    NSArray *nibViews = [[NSBundle bundleForClass:[self class]] loadNibNamed:NSStringFromClass([JSQMessagesToolbarContentView class])
-                                                                       owner:nil
-                                                                     options:nil];
+    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([JSQMessagesToolbarContentView class]) owner:nil options:nil];
     JSQMessagesToolbarContentView *toolbarContentView = [nibViews firstObject];
     toolbarContentView.frame = self.frame;
     [self addSubview:toolbarContentView];
@@ -134,8 +133,6 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
                                                         action:@selector(jsq_rightBarButtonPressed:)
                                               forControlEvents:UIControlEventTouchUpInside];
             }
-            
-            [self toggleSendButtonEnabled];
         }
     }
 }
