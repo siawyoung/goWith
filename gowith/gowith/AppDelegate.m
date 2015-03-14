@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "Client.h"
 #import <MCAppRouter.h>
+#import <FacebookSDK.h>
+#import "AMLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,16 +20,18 @@
 
 - (void) setupRouteViewControllers {
     [[MCAppRouter sharedInstance] mapRoute:@"login" toViewControllerInStoryboardWithName:@"Login" withIdentifer:@"LoginViewController"];
+    
+    [[MCAppRouter sharedInstance] mapRoute:@"carousel" toViewControllerInStoryboardWithName:@"Main" withIdentifer:@"MainViewController"];
 }
 
 - (void) updateRootViewController:(NSNotification *)notification {
     UIViewController *controller = nil;
     
     if ([Client sharedInstance].signedIn) {
-       
+       controller = [[MCAppRouter sharedInstance] viewControllerMatchingRoute:@"carousel"];
     }
     else {
-        controller = [[MCAppRouter sharedInstance] viewControllerMatchingRoute:@"login"];
+        controller = [[AMLoginViewController alloc] init];
     }
     
     [UIView transitionWithView:self.window duration:notification ? 0.4 : 0 options:UIViewAnimationOptionTransitionFlipFromLeft animations: ^{
@@ -36,11 +40,15 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [self setupRouteViewControllers];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self updateRootViewController:nil];
     [self.window makeKeyAndVisible];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootViewController:) name:ClientDidUpdateUserAccountNotification object:nil];
+
     
     return YES;
 }
@@ -65,6 +73,12 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    
+    return wasHandled;
 }
 
 @end

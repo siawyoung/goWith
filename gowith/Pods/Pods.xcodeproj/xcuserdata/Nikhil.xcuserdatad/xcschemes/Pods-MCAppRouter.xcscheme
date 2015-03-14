@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB21A7554EC1ED309538D223"
+               BlueprintIdentifier = "5CB06B1E534B0D0755B7F963"
                BuildableName = "libPods-MCAppRouter.a"
                BlueprintName = "Pods-MCAppRouter"
                ReferencedContainer = "container:Pods.xcodeproj">

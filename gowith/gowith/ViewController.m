@@ -14,13 +14,15 @@
 #import <MCAlertView.h>
 #import <MCPanGestureRecognizer.h>
 #import "CarouselCollectionViewCell.h"
+#import "MCAppRouter.h"
+#import "ProfileViewController.h"
 
-@interface ViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, ProfileViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @property (strong, nonatomic) NSIndexPath *draggingIndexPath;
-@property (strong, nonatomic) NSMutableArray *destinationArray;
+@property (strong, nonatomic) NSArray *destinationArray;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -122,12 +124,109 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    MCPanGestureRecognizer *pan = [[MCPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    pan.direction = MCPanGestureRecognizerDirectionVertical;
+    [self.collectionView addGestureRecognizer:pan];
+    self.collectionView.delaysContentTouches = NO;
+}
+
+- (void)setupCollectionView {
+
+    self.destinationArray = [NSArray array];
+    
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    float cellWidth = floor(screenSize.width * kGoWithCellWidthScaling);
+    float cellHeight = floor(screenSize.height * kGoWithCellHeightScaling);
+    
+    double insetX = (screenSize.width - cellWidth) / 2;
+    
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    flowLayout.itemSize = CGSizeMake(cellWidth, cellHeight);
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, insetX, 0, insetX);
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
 }
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CarouselCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"carouselCell" forIndexPath:indexPath];
+    
+    Destination *destination = self.destinationArray[indexPath.item];
+    cell.destination = destination;
+    cell.sentIndicatorView.alpha = 0;
+    return cell;
+    
+}
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.destinationArray count];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)collectionView.collectionViewLayout;
+    CGFloat index = (CGRectGetMinX(collectionView.bounds) + collectionView.contentInset.left) / (layout.itemSize.width + layout.minimumInteritemSpacing);
+    
+    if (indexPath.item != index) {
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        return;
+    }
+    
+    if (indexPath.item < self.destinationArray.count) {
+        Destination *destination = self.destinationArray[indexPath.item];
+        ProfileViewController *viewController = [[MCAppRouter sharedInstance] viewControllerMatchingRoute:@"profile"];
+        
+        viewController.delegate = self;
+        viewController.destination = destination;
+        self.selectedIndexPath = indexPath;
+        
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+}
+
+
+- (void)removeCardFromCarousel:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    if (!cell) {
+        return;
+    }
+    
+    Destination *destination = self.destinationArray[indexPath.item];
+    [NSObject pop_animate: ^{
+        cell.layer.pop_springBounciness = 0.1;
+        cell.layer.pop_springSpeed = 5;
+        cell.layer.pop_spring.pop_translationY = -CGRectGetHeight(self.view.bounds);
+        cell.layer.pop_spring.opacity = 0;
+    } completion: ^(BOOL finished) {
+        
+        NSMutableArray *array = [self.destinationArray mutableCopy];
+        [array removeObjectAtIndex:indexPath.item];
+        self.destinationArray = [array copy];
+        
+        [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+    }];
+    
+//    [self createChatWithProspect:activity];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ChatArray Updated" object:nil];
+}
+
+
+#pragma mark - ProfileViewControllerDelegate
+
+- (void)profileViewControllerDidReceiveTapOnSupButton:(ProfileViewController *)profileViewController {
+    [self performSelector:@selector(removeCardFromCarousel:) withObject:self.selectedIndexPath afterDelay:0.5];
+}
+
+
 
 @end

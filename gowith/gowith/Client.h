@@ -20,4 +20,6 @@ extern NSString* const ClientDidUpdateUserAccountNotification;
 - (void)signInWithFacebookToken:(NSString *)token completion:(void (^)(NSError *error))completion;
 - (void)signOut;
 
+- (void)signInToFirebaseWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError *error))completion;
+
 @end

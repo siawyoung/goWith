@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "51EA117FD4758E7187A3D08D"
+               BlueprintIdentifier = "1DD9F971753C75095A8C0B27"
                BuildableName = "libPods-Mantle.a"
                BlueprintName = "Pods-Mantle"
                ReferencedContainer = "container:Pods.xcodeproj">

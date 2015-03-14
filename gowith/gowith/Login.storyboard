@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Qn-hf-mce">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -26,18 +26,20 @@
                                 <rect key="frame" x="0.0" y="-33" width="600" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYc-Fx-MMj">
-                                        <rect key="frame" x="40" y="94" width="520" height="259"/>
+                                        <rect key="frame" x="40" y="94" width="520" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="259" id="SHa-ih-kFv"/>
                                         </constraints>
-                                        <string key="text">Welcome to goWith! The app to find friends to meet right now. 
-
-So that we can find friends in your Facebook network who are nearby, we will need access to your Facebook profile and location.
-
-We care about your privacy and ask only for information needed to make SUP useful for you.</string>
+                                        <string key="text">Welcome to goWith! The app to find friends to travel with right now. 
+</string>
                                         <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="SHa-ih-kFv"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

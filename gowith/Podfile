@@ -26,3 +26,4 @@ pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'Jibber-Framework', '~> 1.1', :configurations => ['Debug']
 
 pod 'Firebase', '>= 2.2.0'
+pod 'GPUImage'

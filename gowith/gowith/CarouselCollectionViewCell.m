@@ -7,6 +7,7 @@
 //
 
 #import "CarouselCollectionViewCell.h"
+#import <UIImageView+WebCache.h>
 
 @interface CarouselCollectionViewCell ()
 
@@ -38,6 +39,16 @@
     self.layer.shadowOffset = CGSizeMake(0, 2);
     
     self.contentView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.7];
+}
+
+- (void)setDestination:(Destination *)destination {
+    _destination = destination;
+    self.destinationLabel.text = destination.location;
+    
+    
+    NSURL *url = [NSURL URLWithString:destination.picture];
+    [self.destinationImageView sd_setImageWithURL:url placeholderImage:nil];
+    
 }
 
 @end

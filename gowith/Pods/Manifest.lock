@@ -25,6 +25,8 @@ PODS:
   - DateTools (1.5.0)
   - Facebook-iOS-SDK (3.23.0):
     - Bolts (~> 1.0)
+  - Firebase (2.2.0)
+  - GPUImage (0.1.6)
   - ISO8601DateFormatter (0.7)
   - JGProgressHUD (1.2.3)
   - Jibber-Framework (1.1)
@@ -107,6 +109,8 @@ DEPENDENCIES:
   - ChameleonFramework (~> 1.1)
   - DateTools (~> 1.4)
   - Facebook-iOS-SDK (~> 3.23)
+  - Firebase (>= 2.2.0)
+  - GPUImage
   - JGProgressHUD
   - Jibber-Framework (~> 1.1)
   - JSQMessagesViewController (~> 6.0)
@@ -134,13 +138,15 @@ SPEC CHECKSUMS:
   ChameleonFramework: 5d34a29b6db60594a9998f6dfdffa8ac5f05979a
   DateTools: 7df78f0c4719eb28cfd2d58a90fafd036e73156c
   Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
+  Firebase: e7a2ea2ffeff99f9c37028b354194dcc9718d36b
+  GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
   ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
   JGProgressHUD: 733523c80f69b6dfc41b88a0f33883a89a8b4c3b
   Jibber-Framework: b2d402f80c8da9ddb469f1f10123434d9b35e1a4
   JSQMessagesViewController: e93a288a9662d4519c95a28a8c0eec10beae1bfc
   JSQSystemSoundPlayer: 55528c699a283aae2220d3ae7b8b527d2ecef4b4
   Mantle: 1ca9c0fa84d3d3fc98524e7229f30489b6dd44e5
-  MCAdditions: e6d61827dc1ab78dbc93258c8e498b9dfaf27d7d
+  MCAdditions: a8eba8b4be607f27f6abd668fe641eb8ac54cfe1
   MCAppRouter: 952507c24e5923b9310fa96651bfe7511a203173
   MCDynamicObject: 680592fabc2f6c55d33bbd96da9238aae543c66d
   MCModalView: b799d7346d916834136dbde765af523a3aa46e7d
@@ -152,4 +158,4 @@ SPEC CHECKSUMS:
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   TMCache: 11589ef8c40909114a5e60132711c9a559e01d97
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0

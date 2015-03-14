@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Destination.h"
 
 @interface ViewController : UIViewController
+
+@property (strong, nonatomic) Destination *destination;
 
 
 @end

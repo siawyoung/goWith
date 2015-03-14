@@ -7,12 +7,14 @@
 //
 
 #import "Client.h"
+#import <Firebase/Firebase.h>
 #import "MCNetworkActivityLogger.h"
 #import "MCJSONRequestSerializer.h"
 #import "MCJSONResponseSerializer.h"
 #import "User.h"
 
 #import <FacebookSDK.h>
+#import "MCAlertView.h"
 
 NSString *const ClientDidUpdateUserAccountNotification = @"ClientDidUpdateUserAccountNotification";
 
@@ -25,7 +27,7 @@ NSString *const ClientDidUpdateUserAccountNotification = @"ClientDidUpdateUserAc
 
 @implementation Client
 
-static NSString *const kBaseURL = @"http://api.moviesapp.co/";
+static NSString *const kBaseURL = @"";
 static NSString *const kAuthTokenHeader = @"X-Auth-Token";
 static NSString *const kAPIVersionHeader = @"X-Api-Version";
 
@@ -56,27 +58,36 @@ static NSString *const kAPIVersionHeader = @"X-Api-Version";
 }
 
 - (BOOL)signedIn {
-    return self.authToken.length > 0;
+	return self.authToken.length > 0;
+}
+
+- (void)signInToFirebaseWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError *error))completion {
+	Firebase *ref = [[Firebase alloc] initWithUrl:@"https://gowithme.firebaseio.com"];
+	[ref authUser:email password:password
+	       withCompletionBlock: ^(NSError *error, FAuthData *authData) {
+	    if (error) {
+	        NSLog(@"error: %@", error);
+            [[MCAlertView alertViewWithTitle:@"Error Signing In" message:error.domain actionButtonTitle:nil cancelButtonTitle:@"Cancel" completionHandler:nil] show];
+
+		}
+	    else {
+            self.authToken = authData.token;
+            self.currentUser.fullName = authData.providerData[@"displayName"];
+            completion(nil);
+            [[NSNotificationCenter defaultCenter] postNotificationName:ClientDidUpdateUserAccountNotification object:nil];
+		}
+	}];
 }
 
 - (void)signInWithFacebookToken:(NSString *)token completion:(void (^)(NSError *error))completion {
-	NSDictionary *params = @{
-		@"fb_token": token
-	};
-
-	__weak typeof(self) weakSelf = self;
-
-	[self POST:@"sessions" parameters:params success: ^(NSURLSessionDataTask *task, id responseObject) {
-	    typeof(self) strongSelf = weakSelf;
-	    strongSelf.authToken = responseObject[@"auth_token"];
-	    strongSelf.currentUser = [User modelWithJSONDictionary:responseObject[@"user"] error:nil];
-
-	    [[NSNotificationCenter defaultCenter] postNotificationName:ClientDidUpdateUserAccountNotification object:nil];
-
+	Firebase *ref = [[Firebase alloc] initWithUrl:@"https://gowithme.firebaseio.com"];
+	[ref authWithOAuthProvider:@"facebook" token:token withCompletionBlock: ^(NSError *error, FAuthData *authData) {
+	    NSLog(@"my token : %@", token);
+	    self.authToken = authData.token;
+	    self.currentUser.fullName = authData.providerData[@"displayName"];
+	    NSLog(@"token : %@", authData);
+	    NSLog(@"error: %@", error);
 	    completion(nil);
-	} failure: ^(NSURLSessionDataTask *task, NSError *error) {
-	    NSLog(@"error: %@", [error localizedDescription]);
-	    completion(error);
 	}];
 }
 

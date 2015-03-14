@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Destination.h"
 
 @interface CarouselCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *sentIndicatorView;
+@property (strong, nonatomic) Destination *destination;
+
 
 @end

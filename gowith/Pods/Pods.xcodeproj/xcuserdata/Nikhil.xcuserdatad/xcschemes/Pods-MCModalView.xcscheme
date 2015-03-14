@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6A38C94DC4B34E107B85C112"
+               BlueprintIdentifier = "351D8905CB8B9AA006DFEBFC"
                BuildableName = "libPods-MCModalView.a"
                BlueprintName = "Pods-MCModalView"
                ReferencedContainer = "container:Pods.xcodeproj">
