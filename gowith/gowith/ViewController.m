@@ -200,7 +200,8 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
 }
 
 - (IBAction)didTapOnOptionsButton:(id)sender {
-    [self.navigationController pushViewControllerMatchingRoute:@"messages" animated:YES];
+    UIViewController *viewController = [[MCAppRouter sharedInstance] viewControllerMatchingRoute:@"messages"];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 //    NSArray *images = @[
