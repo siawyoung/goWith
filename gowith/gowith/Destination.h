@@ -10,8 +10,7 @@
 
 @interface Destination : MCModel
 
-@property (strong, nonatomic) NSString *location;
-@property (strong, nonatomic) NSString *swipeStatus;
-@property (strong, nonatomic) NSString *picture;
+@property (strong, nonatomic) NSString *url;
+
 
 @end

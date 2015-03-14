@@ -8,6 +8,7 @@
 
 #import "CarouselCollectionViewCell.h"
 #import <UIImageView+WebCache.h>
+#import "Client.h"
 
 @interface CarouselCollectionViewCell ()
 
@@ -39,16 +40,27 @@
     self.layer.shadowOffset = CGSizeMake(0, 2);
     
     self.contentView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.7];
+    
+    
 }
 
-- (void)setDestination:(Destination *)destination {
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    [self setNeedsDisplay]; // force drawRect:
+}
+
+- (void)setDestination:(NSString *)destination {
     _destination = destination;
-    self.destinationLabel.text = destination.location;
-    
-    
-    NSURL *url = [NSURL URLWithString:destination.picture];
-    [self.destinationImageView sd_setImageWithURL:url placeholderImage:nil];
-    
+    self.destinationLabel.text = destination;
+//    [[Client sharedInstance] retrieveDestinationDescription:destination withCompletionHandler:^(NSError *error, NSString *describe) {
+//        self.descriptionLabel.text = describe;
+//        NSLog(@"describer: %@", describe);
+//    }];
+    [[Client sharedInstance] retrieveDestinationPictures:destination withCompletionHandler:^(NSError *error, NSArray *images) {
+        Destination *destined = images.firstObject;
+        NSURL *url = [NSURL URLWithString:destined.url];
+        [self.destinationImageView sd_setImageWithURL:url placeholderImage:nil];
+    }];
 }
 
 @end

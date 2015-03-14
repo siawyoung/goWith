@@ -22,4 +22,8 @@ extern NSString* const ClientDidUpdateUserAccountNotification;
 
 - (void)signInToFirebaseWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError *error))completion;
 
+- (void)retrieveDestinationDescription:(NSString *) destination withCompletionHandler:(void (^)(NSError *error, NSString *describe))completion;
+- (void)retrieveDestinationPictures:(NSString *) destination withCompletionHandler:(void (^)(NSError *error, NSArray *images))completion;
+- (void)retrieveDestinationAttractions:(NSString *) destination withCompletionHandler:(void (^)(NSError *error, NSArray *attractions))completion;
+
 @end

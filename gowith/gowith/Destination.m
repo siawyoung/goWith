@@ -11,10 +11,9 @@
 @implementation Destination
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-             @"swipeStatus": @"swipe_status",
-             @"picture": @"destination_picture"
-             };
+	return @{
+			   @"url": @"images.large.url"
+	};
 }
 
 @end

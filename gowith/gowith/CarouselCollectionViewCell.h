@@ -12,7 +12,7 @@
 @interface CarouselCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *sentIndicatorView;
-@property (strong, nonatomic) Destination *destination;
+@property (strong, nonatomic) NSString *destination;
 
 
 @end

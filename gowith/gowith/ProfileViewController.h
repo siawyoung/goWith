@@ -22,6 +22,6 @@
 
 @property (weak, nonatomic) id <ProfileViewControllerDelegate> delegate;
 @property (strong, nonatomic) User *user;
-@property (strong, nonatomic) Destination *destination;
+@property (strong, nonatomic) NSString *destination;
 
 @end

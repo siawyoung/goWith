@@ -15,6 +15,8 @@
 
 #import <FacebookSDK.h>
 #import "MCAlertView.h"
+#import "Destination.h"
+#import "Attractions.h"
 
 NSString *const ClientDidUpdateUserAccountNotification = @"ClientDidUpdateUserAccountNotification";
 
@@ -27,7 +29,7 @@ NSString *const ClientDidUpdateUserAccountNotification = @"ClientDidUpdateUserAc
 
 @implementation Client
 
-static NSString *const kBaseURL = @"";
+static NSString *const kBaseURL = @"http://128.199.82.131/";
 static NSString *const kAuthTokenHeader = @"X-Auth-Token";
 static NSString *const kAPIVersionHeader = @"X-Api-Version";
 
@@ -89,6 +91,39 @@ static NSString *const kAPIVersionHeader = @"X-Api-Version";
 	    NSLog(@"error: %@", error);
 	    completion(nil);
 	}];
+}
+
+- (void)retrieveDestinationDescription:(NSString *) destination withCompletionHandler:(void (^)(NSError *error, NSString *describe))completion {
+    NSString *url = [NSString stringWithFormat:@"description/%@", destination];
+    [self GET:url parameters:nil success: ^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *description = responseObject;
+        completion(nil, description);
+    } failure: ^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error: %@", [error localizedDescription]);
+        completion(error, nil);
+    }];
+}
+
+- (void)retrieveDestinationPictures:(NSString *) destination withCompletionHandler:(void (^)(NSError *error, NSArray *images))completion {
+    NSString *url = [NSString stringWithFormat:@"pictures/%@", destination];
+    [self GET:url parameters:nil success: ^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *images = [Destination arrayOfModelFromJSONArray:responseObject[@"data"]];
+        completion(nil, images);
+    } failure: ^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error: %@", [error localizedDescription]);
+        completion(error, nil);
+    }];
+}
+
+- (void)retrieveDestinationAttractions:(NSString *) destination withCompletionHandler:(void (^)(NSError *error, NSArray *attractions))completion {
+    NSString *url = [NSString stringWithFormat:@"attractions/%@", destination];
+    [self GET:url parameters:nil success: ^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *attractions = [Attractions arrayOfModelFromJSONArray:responseObject[@"data"]];
+        completion(nil, attractions);
+    } failure: ^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error: %@", [error localizedDescription]);
+        completion(error, nil);
+    }];
 }
 
 - (void)signOut {

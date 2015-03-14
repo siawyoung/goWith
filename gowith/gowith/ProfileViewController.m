@@ -14,8 +14,10 @@
 #import <FacebookSDK.h>
 #import <UITableView+MCAdditions.h>
 #import <JGProgressHUD.h>
+#import "Client.h"
+#import "Attractions.h"
 
-@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ProfileViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (nonatomic, assign) CGFloat headerHeight;
@@ -23,11 +25,10 @@
 @property (strong, nonatomic) IBOutlet UIImageView *userImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-
 @property (strong, nonatomic) IBOutlet UIButton *supButton;
 @property (strong, nonatomic) IBOutlet UIView *redOutlineView;
 
+@property (strong, nonatomic) IBOutlet UILabel *somethingLabel;
 @property (strong, nonatomic) JGProgressHUD *hud;
 
 @end
@@ -83,7 +84,6 @@
 	[super viewDidLoad];
 
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-	[self.tableView registerSizingCellWithReuseIdentifier:@"Cell"];
 
 	[self setup];
 	[self setupHeaderView];
@@ -102,10 +102,11 @@
 
 	insets.top -= 65;
 	self.tableView.scrollIndicatorInsets = insets;
-
-    NSURL *url = [NSURL URLWithString:self.destination.picture];
-    [self.userImageView sd_setImageWithURL:url placeholderImage:nil];
-
+    
+    [[Client sharedInstance] retrieveDestinationAttractions:self.destination withCompletionHandler:^(NSError *error, NSArray *attractions) {
+        Attractions *attract = attractions.firstObject;
+        self.somethingLabel.text = attract.name;
+    }];
 
     [self.tableView reloadData];
 	[self.view addSubview:self.supButton];
@@ -116,11 +117,15 @@
 	[super viewDidAppear:animated];
 	CGFloat inset = (CGRectGetWidth(self.view.bounds) - 50) / 2;
 	self.tableView.separatorInset = UIEdgeInsetsMake(0, inset, 0, inset);
+    self.title = self.destination;
 }
 
 - (void)setup {
-	self.title = self.user.fullName;
-    self.nameLabel.text = self.destination.location;
+    [[Client sharedInstance] retrieveDestinationPictures:self.destination withCompletionHandler:^(NSError *error, NSArray *images) {
+        Destination *destined = images.firstObject;
+        NSURL *url = [NSURL URLWithString:destined.url];
+        [self.userImageView sd_setImageWithURL:url placeholderImage:nil];
+    }];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -135,16 +140,6 @@
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
 }
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 3;
-}
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//	
-//}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	[self updateHeaderView];

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E08C9A31AEB97C0DBBA692FB"
+               BlueprintIdentifier = "9F9BA33C8A26D9263529D710"
                BuildableName = "libPods-MCDynamicObject.a"
                BlueprintName = "Pods-MCDynamicObject"
                ReferencedContainer = "container:Pods.xcodeproj">

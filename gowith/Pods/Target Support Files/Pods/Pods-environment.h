@@ -234,6 +234,12 @@
 #define COCOAPODS_VERSION_MINOR_Parse 6
 #define COCOAPODS_VERSION_PATCH_Parse 4
 
+// RNFrostedSidebar
+#define COCOAPODS_POD_AVAILABLE_RNFrostedSidebar
+#define COCOAPODS_VERSION_MAJOR_RNFrostedSidebar 0
+#define COCOAPODS_VERSION_MINOR_RNFrostedSidebar 2
+#define COCOAPODS_VERSION_PATCH_RNFrostedSidebar 0
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3

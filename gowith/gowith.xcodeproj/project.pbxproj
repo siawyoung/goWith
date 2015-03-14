@@ -30,6 +30,9 @@
 		31A4686A1AB4969100F3F470 /* AMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A468691AB4969100F3F470 /* AMLoginViewController.m */; };
 		31A4686E1AB4971400F3F470 /* BlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A4686C1AB4971400F3F470 /* BlurView.m */; };
 		31A4686F1AB4971400F3F470 /* demoVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 31A4686D1AB4971400F3F470 /* demoVideo.mp4 */; };
+		31A468721AB4A42400F3F470 /* Attractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A468711AB4A42400F3F470 /* Attractions.m */; };
+		31A4687C1AB4BFEA00F3F470 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4687B1AB4BFEA00F3F470 /* MessagesViewController.swift */; };
+		31A4687E1AB4C0DE00F3F470 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31A4687D1AB4C0DE00F3F470 /* Messages.storyboard */; };
 		A05AE5EA8B4989269196402B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91140E813682037A537A0D4C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +90,11 @@
 		31A4686B1AB4971400F3F470 /* BlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurView.h; sourceTree = "<group>"; };
 		31A4686C1AB4971400F3F470 /* BlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurView.m; sourceTree = "<group>"; };
 		31A4686D1AB4971400F3F470 /* demoVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demoVideo.mp4; sourceTree = "<group>"; };
+		31A468701AB4A42400F3F470 /* Attractions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attractions.h; sourceTree = "<group>"; };
+		31A468711AB4A42400F3F470 /* Attractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attractions.m; sourceTree = "<group>"; };
+		31A4687A1AB4BFE900F3F470 /* gowith-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gowith-Bridging-Header.h"; sourceTree = "<group>"; };
+		31A4687B1AB4BFEA00F3F470 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		31A4687D1AB4C0DE00F3F470 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		8EC248BB792051DD51F4F6A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		91140E813682037A537A0D4C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C454DA4919C2ADEC9EB29592 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +153,7 @@
 				310907471AB44D4100581047 /* AppDelegate.h */,
 				310907481AB44D4100581047 /* AppDelegate.m */,
 				310907891AB458DB00581047 /* Carousel */,
+				31A468791AB4BD7F00F3F470 /* Messages */,
 				310907881AB44EE200581047 /* Login View */,
 				31A468611AB46AB700F3F470 /* Profile */,
 				310907861AB44ECC00581047 /* Client */,
@@ -160,6 +169,7 @@
 		310907431AB44D4100581047 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				31A4687A1AB4BFE900F3F470 /* gowith-Bridging-Header.h */,
 				310907441AB44D4100581047 /* Info.plist */,
 				310907451AB44D4100581047 /* main.m */,
 				3109078D1AB45AE600581047 /* goWith-Prefix.pch */,
@@ -228,6 +238,8 @@
 				31A4685F1AB4684E00F3F470 /* Chat.m */,
 				3109077A1AB44D6400581047 /* User.h */,
 				3109077B1AB44D6400581047 /* User.m */,
+				31A468701AB4A42400F3F470 /* Attractions.h */,
+				31A468711AB4A42400F3F470 /* Attractions.m */,
 				3109078F1AB45E6B00581047 /* Destination.h */,
 				310907901AB45E6B00581047 /* Destination.m */,
 				31A4685B1AB4670100F3F470 /* MockData.h */,
@@ -256,6 +268,15 @@
 				31A468691AB4969100F3F470 /* AMLoginViewController.m */,
 			);
 			name = AMLoginView;
+			sourceTree = "<group>";
+		};
+		31A468791AB4BD7F00F3F470 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				31A4687B1AB4BFEA00F3F470 /* MessagesViewController.swift */,
+				31A4687D1AB4C0DE00F3F470 /* Messages.storyboard */,
+			);
+			name = Messages;
 			sourceTree = "<group>";
 		};
 		B5336A503DFE92F9BDA074DF /* Pods */ = {
@@ -353,6 +374,7 @@
 				3109074F1AB44D4100581047 /* Main.storyboard in Resources */,
 				31A4686F1AB4971400F3F470 /* demoVideo.mp4 in Resources */,
 				31A468651AB46AC300F3F470 /* Profile.storyboard in Resources */,
+				31A4687E1AB4C0DE00F3F470 /* Messages.storyboard in Resources */,
 				310907541AB44D4100581047 /* LaunchScreen.xib in Resources */,
 				310907511AB44D4100581047 /* Images.xcassets in Resources */,
 			);
@@ -414,8 +436,10 @@
 				31A468661AB46AC300F3F470 /* ProfileViewController.m in Sources */,
 				310907811AB44D6500581047 /* MCJSONRequestSerializer.m in Sources */,
 				3109074C1AB44D4100581047 /* ViewController.m in Sources */,
+				31A468721AB4A42400F3F470 /* Attractions.m in Sources */,
 				310907491AB44D4100581047 /* AppDelegate.m in Sources */,
 				3109077C1AB44D6400581047 /* Client.m in Sources */,
+				31A4687C1AB4BFEA00F3F470 /* MessagesViewController.swift in Sources */,
 				310907801AB44D6500581047 /* LoginViewController.m in Sources */,
 				310907461AB44D4100581047 /* main.m in Sources */,
 				310907911AB45E6B00581047 /* Destination.m in Sources */,
@@ -543,9 +567,12 @@
 			baseConfigurationReference = C454DA4919C2ADEC9EB29592 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = gowith/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "gowith/gowith-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -554,9 +581,11 @@
 			baseConfigurationReference = 8EC248BB792051DD51F4F6A3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = gowith/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "gowith/gowith-Bridging-Header.h";
 			};
 			name = Release;
 		};

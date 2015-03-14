@@ -17,6 +17,8 @@
 #import "MCAppRouter.h"
 #import "ProfileViewController.h"
 
+#import <RNFrostedSidebar.h>
+
 @interface ViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, ProfileViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
@@ -89,7 +91,7 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
 				        theCell.sentIndicatorView.pop_spring.pop_scaleXY = CGPointMake(1, 1);
 					}
 				} completion: ^(BOOL finished) {
-				    Destination *destination = self.destinationArray[indexPath.item];
+				    NSString *destination = self.destinationArray[indexPath.item];
 
 				    NSMutableArray *array = [self.destinationArray mutableCopy];
 				    [array removeObjectAtIndex:indexPath.item];
@@ -124,7 +126,8 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+	[self setupCollectionView];
+    
     MCPanGestureRecognizer *pan = [[MCPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     pan.direction = MCPanGestureRecognizerDirectionVertical;
     [self.collectionView addGestureRecognizer:pan];
@@ -133,7 +136,7 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
 
 - (void)setupCollectionView {
 
-    self.destinationArray = [NSArray array];
+    self.destinationArray = @[@"Seoul", @"Jakarta", @"Moscow", @"London", @"Busan", @"Tokyo", @"Bangkok", @"Shanghai", @"Hokkaido", @"Paris"];
     
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     float cellWidth = floor(screenSize.width * kGoWithCellWidthScaling);
@@ -158,8 +161,9 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
     
     CarouselCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"carouselCell" forIndexPath:indexPath];
     
-    Destination *destination = self.destinationArray[indexPath.item];
+    NSString *destination = self.destinationArray[indexPath.item];
     cell.destination = destination;
+    [cell setNeedsDisplay];
     cell.sentIndicatorView.alpha = 0;
     return cell;
     
@@ -169,6 +173,7 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSLog(@"count : %lul", (unsigned long)self.destinationArray.count);
     return [self.destinationArray count];
 }
 
@@ -182,7 +187,7 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
     }
     
     if (indexPath.item < self.destinationArray.count) {
-        Destination *destination = self.destinationArray[indexPath.item];
+        NSString *destination = self.destinationArray[indexPath.item];
         ProfileViewController *viewController = [[MCAppRouter sharedInstance] viewControllerMatchingRoute:@"profile"];
         
         viewController.delegate = self;
@@ -194,6 +199,127 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
     }
 }
 
+- (IBAction)didTapOnOptionsButton:(id)sender {
+    [self.navigationController pushViewControllerMatchingRoute:@"messages" animated:YES];
+}
+
+//    NSArray *images = @[
+//                        [UIImage imageNamed:@"gear"],
+//                        [UIImage imageNamed:@"globe"],
+//                        [UIImage imageNamed:@"profile"],
+//                        [UIImage imageNamed:@"star"]
+//                        ];
+//    
+//    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
+//    callout.delegate = self;
+//    [callout show];
+//}
+//
+//- (void)closeMenu {
+//    if (callout) {
+//        [callout dismissAnimated:YES];
+//    }
+//}
+//
+//- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+//    [sidebar dismissAnimated:YES];
+//    
+//    if (index == 0) {
+//        MasterViewController *mvc = [[MasterViewController alloc] init];
+//        [self.navigationController pushViewController:mvc animated:NO];
+//    }
+//    else if (index == 1) {
+//        [self pushMyTripsController];
+//    }
+//    else if (index == 2) {
+//        AMLoginViewController *amlvc = [[AMLoginViewController alloc] init];
+//        [self.navigationController pushViewController:amlvc animated:NO];
+//    }
+//}
+
+
+- (IBAction)handleRejectButton:(UIButton *)sender {
+    CGPoint center = sender.center;
+    CGPoint rootViewPoint = [sender.superview convertPoint:center toView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:rootViewPoint];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    CGFloat index = (CGRectGetMinX(self.collectionView.bounds) + self.collectionView.contentInset.left) / (layout.itemSize.width + layout.minimumInteritemSpacing);
+    
+    if (indexPath.item != index) {
+        return;
+    }
+    
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[CarouselCollectionViewCell class]]) {
+        CarouselCollectionViewCell *theCell = (CarouselCollectionViewCell *)cell;
+        
+        theCell.sentIndicatorView.pop_scaleXY = CGPointMake(1.5, 1.5);
+        theCell.sentIndicatorView.alpha = 0;
+        
+        
+        [NSObject pop_animate: ^{
+            theCell.sentIndicatorView.pop_spring.pop_scaleXY = CGPointMake(1, 1);
+            theCell.sentIndicatorView.pop_spring.alpha = 1;
+        } completion: ^(BOOL finished) {
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+            if (!cell) {
+                return;
+            }
+            
+            NSString *destination = self.destinationArray[indexPath.item];
+            [NSObject pop_animate: ^{
+                cell.layer.pop_springBounciness = 0.1;
+                cell.layer.pop_springSpeed = 5;
+                cell.layer.pop_spring.pop_translationY = CGRectGetHeight(self.view.bounds);
+                cell.layer.pop_spring.opacity = 0;
+            } completion: ^(BOOL finished) {
+                
+                NSMutableArray *array = [self.destinationArray mutableCopy];
+                [array removeObjectAtIndex:indexPath.item];
+                self.destinationArray = [array copy];
+                
+                [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            }];
+
+        }];
+    }
+
+}
+
+- (IBAction)handleAddButton:(UIButton *)sender {
+    
+    CGPoint center = sender.center;
+    CGPoint rootViewPoint = [sender.superview convertPoint:center toView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:rootViewPoint];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    CGFloat index = (CGRectGetMinX(self.collectionView.bounds) + self.collectionView.contentInset.left) / (layout.itemSize.width + layout.minimumInteritemSpacing);
+    
+    if (indexPath.item != index) {
+        return;
+    }
+
+    
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[CarouselCollectionViewCell class]]) {
+        CarouselCollectionViewCell *theCell = (CarouselCollectionViewCell *)cell;
+        
+        theCell.sentIndicatorView.pop_scaleXY = CGPointMake(1.5, 1.5);
+        theCell.sentIndicatorView.alpha = 0;
+        
+        __weak typeof(self) weakSelf = self;
+        
+        [NSObject pop_animate: ^{
+            theCell.sentIndicatorView.pop_spring.pop_scaleXY = CGPointMake(1, 1);
+            theCell.sentIndicatorView.pop_spring.alpha = 1;
+        } completion: ^(BOOL finished) {
+            typeof(self) strongSelf = weakSelf;
+            [strongSelf removeCardFromCarousel:indexPath];
+        }];
+    }
+
+}
 
 - (void)removeCardFromCarousel:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
@@ -201,7 +327,7 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
         return;
     }
     
-    Destination *destination = self.destinationArray[indexPath.item];
+    NSString *destination = self.destinationArray[indexPath.item];
     [NSObject pop_animate: ^{
         cell.layer.pop_springBounciness = 0.1;
         cell.layer.pop_springSpeed = 5;
@@ -216,7 +342,7 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
         [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
     }];
     
-//    [self createChatWithProspect:activity];
+//    [self createChatWithProspect:destination];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ChatArray Updated" object:nil];
 }
 
@@ -225,6 +351,20 @@ static CGFloat const kGoWithCellHeightScaling = 0.63;
 
 - (void)profileViewControllerDidReceiveTapOnSupButton:(ProfileViewController *)profileViewController {
     [self performSelector:@selector(removeCardFromCarousel:) withObject:self.selectedIndexPath afterDelay:0.5];
+}
+
+#pragma mark <UIScrollViewDelegate>
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    double cellWidthIncludingSpacing = flowLayout.itemSize.width + flowLayout.minimumLineSpacing;
+    CGPoint offset = *targetContentOffset;
+    
+    double index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing;
+    double roundedIndex = round(index);
+    
+    offset = CGPointMake(roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, -scrollView.contentInset.top);
+    *targetContentOffset = offset;
 }
 
 
