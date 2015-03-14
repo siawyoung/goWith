@@ -1,0 +1,57 @@
+{
+  "name": "MCAdditions",
+  "version": "0.2.2",
+  "platforms": {
+    "ios": "7.0"
+  },
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "summary": "A host of useful utilties for any iOS application.",
+  "homepage": "https://github.com/matthewcheok/MCAdditions",
+  "authors": {
+    "Matthew Cheok": "cheok.jz@gmail.com"
+  },
+  "requires_arc": true,
+  "source": {
+    "git": "https://github.com/matthewcheok/MCAdditions.git",
+    "branch": "master",
+    "tag": "0.2.2"
+  },
+  "source_files": "MCAdditions/MCAdditions.h",
+  "dependencies": {
+    "Mantle": [
+      "~> 1.4.1"
+    ],
+    "ISO8601DateFormatter": [
+      "~> 0.7"
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "DataSource",
+      "source_files": "MCAdditions/Classes/DataSource/*.{h,m}"
+    },
+    {
+      "name": "Model",
+      "source_files": "MCAdditions/Classes/Model/*.{h,m}"
+    },
+    {
+      "name": "Observers",
+      "source_files": "MCAdditions/Classes/Observers/*.{h,m}"
+    },
+    {
+      "name": "UI",
+      "source_files": "MCAdditions/Classes/UI/*.{h,m}"
+    },
+    {
+      "name": "Categories",
+      "source_files": "MCAdditions/Categories/*.{h,m}"
+    },
+    {
+      "name": "ExtObjC",
+      "source_files": "MCAdditions/libextobjc/*.{h,m}"
+    }
+  ]
+}
