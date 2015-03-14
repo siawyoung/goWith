@@ -1,0 +1,1 @@
+../../../MCAdditions/MCAdditions/Classes/UI/MCScrollToDismissGesture.h

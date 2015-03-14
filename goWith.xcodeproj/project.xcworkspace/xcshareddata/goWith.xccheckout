@@ -14,11 +14,11 @@
 		<string>github.com:siawyoung/goWith.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>goWith/goWith.xcodeproj</string>
+	<string>goWith.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>32132812445C24CC1CA84FE422998DD0EADD1E3D</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:siawyoung/goWith.git</string>
