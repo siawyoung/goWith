@@ -29,7 +29,9 @@
 @property (strong, nonatomic) IBOutlet UIView *redOutlineView;
 
 @property (strong, nonatomic) IBOutlet UILabel *somethingLabel;
+@property (strong, nonatomic) IBOutlet UILabel *attractionLabel2;
 @property (strong, nonatomic) JGProgressHUD *hud;
+@property (strong, nonatomic) IBOutlet UILabel *attractionLabel3;
 
 @end
 
@@ -105,7 +107,14 @@
     
     [[Client sharedInstance] retrieveDestinationAttractions:self.destination withCompletionHandler:^(NSError *error, NSArray *attractions) {
         Attractions *attract = attractions.firstObject;
-        self.somethingLabel.text = attract.name;
+        Attractions *attract2 =  [attractions objectAtIndex:2];
+        Attractions *attract3 =  [attractions objectAtIndex:3];
+        NSString *attract1text = [NSString stringWithFormat:@"Attraction 1: %@", attract.name];
+        NSString *attract2text = [NSString stringWithFormat:@"Attraction 2: %@", attract2.name];
+        NSString *attract3text = [NSString stringWithFormat:@"Attraction 3: %@", attract3.name];
+        self.somethingLabel.text = attract1text;
+        self.attractionLabel2.text = attract2text;
+        self.attractionLabel3.text = attract3text;
     }];
 
     [self.tableView reloadData];

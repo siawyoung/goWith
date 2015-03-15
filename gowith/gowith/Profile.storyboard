@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -10,6 +11,8 @@
             <string>Raleway-Medium</string>
         </mutableArray>
         <mutableArray key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+            <string>Raleway</string>
             <string>Raleway</string>
         </mutableArray>
     </customFonts>
@@ -41,34 +44,80 @@
                                         </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOMETHING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQj-UH-KIg">
-                                        <rect key="frame" x="8" y="356" width="359" height="179"/>
+                                        <rect key="frame" x="8" y="356" width="359" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="RhE-OO-fTE"/>
+                                            <constraint firstAttribute="height" constant="65" id="Uf5-gK-pPB"/>
                                             <constraint firstAttribute="height" constant="179" id="be2-Rg-mXx"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="RhE-OO-fTE"/>
+                                                <exclude reference="be2-Rg-mXx"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOMETHING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQf-fE-cDf">
+                                        <rect key="frame" x="8" y="458" width="359" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="179" id="OSO-79-x02"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="ZeT-UL-Cvy"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="rdA-ZK-vMp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="OSO-79-x02"/>
+                                                <exclude reference="ZeT-UL-Cvy"/>
+                                                <exclude reference="rdA-ZK-vMp"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOMETHING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvN-bZ-9xf">
+                                        <rect key="frame" x="8" y="406" width="359" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="179" id="XaH-DK-0lZ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="YOh-Uq-e67"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="ltg-1S-lb8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="XaH-DK-0lZ"/>
+                                                <exclude reference="YOh-Uq-e67"/>
+                                                <exclude reference="ltg-1S-lb8"/>
                                             </mask>
                                         </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rQf-fE-cDf" secondAttribute="trailing" constant="8" id="0qJ-1N-RJP"/>
+                                    <constraint firstItem="wvN-bZ-9xf" firstAttribute="leading" secondItem="3DW-pI-FoI" secondAttribute="leading" constant="8" id="11U-NM-hyt"/>
+                                    <constraint firstItem="rQf-fE-cDf" firstAttribute="top" secondItem="KQj-UH-KIg" secondAttribute="bottom" constant="37" id="1Ra-SY-Bsa"/>
                                     <constraint firstAttribute="bottom" secondItem="kaN-mq-o0z" secondAttribute="bottom" constant="195" id="1k6-Rb-gbp"/>
                                     <constraint firstAttribute="bottom" secondItem="kaN-mq-o0z" secondAttribute="bottom" constant="40" id="8UD-tV-JgK"/>
-                                    <constraint firstAttribute="bottom" secondItem="KQj-UH-KIg" secondAttribute="bottom" constant="8" id="GjG-08-tS3"/>
+                                    <constraint firstAttribute="bottom" secondItem="KQj-UH-KIg" secondAttribute="bottom" constant="122" id="GjG-08-tS3"/>
                                     <constraint firstAttribute="trailing" secondItem="KQj-UH-KIg" secondAttribute="trailing" constant="8" id="LBj-Go-BYV"/>
                                     <constraint firstAttribute="trailing" secondItem="kaN-mq-o0z" secondAttribute="trailing" id="QOa-jF-dW2"/>
                                     <constraint firstItem="KQj-UH-KIg" firstAttribute="leading" secondItem="3DW-pI-FoI" secondAttribute="leading" constant="8" id="TmM-sf-cBJ"/>
                                     <constraint firstItem="kaN-mq-o0z" firstAttribute="leading" secondItem="3DW-pI-FoI" secondAttribute="leading" id="YGt-qh-xU0"/>
+                                    <constraint firstItem="rQf-fE-cDf" firstAttribute="leading" secondItem="3DW-pI-FoI" secondAttribute="leading" constant="8" id="YYv-yw-4f0"/>
+                                    <constraint firstItem="wvN-bZ-9xf" firstAttribute="top" secondItem="KQj-UH-KIg" secondAttribute="bottom" constant="-15" id="Yba-3c-uiU"/>
+                                    <constraint firstAttribute="bottom" secondItem="rQf-fE-cDf" secondAttribute="bottom" constant="20" id="ZQQ-3H-gKO"/>
                                     <constraint firstAttribute="bottom" secondItem="KQj-UH-KIg" secondAttribute="bottom" constant="8" id="k6S-Tp-9I7"/>
+                                    <constraint firstItem="rQf-fE-cDf" firstAttribute="top" secondItem="wvN-bZ-9xf" secondAttribute="bottom" constant="-13" id="ksk-H4-ocK"/>
                                     <constraint firstAttribute="trailing" secondItem="KQj-UH-KIg" secondAttribute="trailing" constant="8" id="nTk-7T-Aef"/>
                                     <constraint firstItem="kaN-mq-o0z" firstAttribute="top" secondItem="3DW-pI-FoI" secondAttribute="top" id="sOS-t7-Q0t"/>
                                     <constraint firstAttribute="bottom" secondItem="KQj-UH-KIg" secondAttribute="bottom" constant="-12" id="sYV-Gz-xJm"/>
+                                    <constraint firstAttribute="trailing" secondItem="wvN-bZ-9xf" secondAttribute="trailing" constant="8" id="uMg-1x-uGH"/>
                                     <constraint firstItem="KQj-UH-KIg" firstAttribute="top" secondItem="kaN-mq-o0z" secondAttribute="bottom" constant="8" id="z47-OC-3Ky"/>
                                 </constraints>
                                 <variation key="default">
@@ -81,7 +130,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUC-wp-vYA">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUC-wp-vYA">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-o7-e6P">
@@ -98,7 +147,7 @@
                                     <constraint firstAttribute="height" constant="60" id="mOd-O8-plc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="23"/>
-                                <state key="normal" title="Say Hi!">
+                                <state key="normal" title="Express Interest!">
                                     <color key="titleColor" red="0.12637259070000001" green="0.12639245390000001" blue="0.1263653636" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -110,14 +159,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="hjP-o7-e6P" secondAttribute="trailing" id="3fO-1z-Bgy"/>
+                            <constraint firstAttribute="trailing" secondItem="rUC-wp-vYA" secondAttribute="trailing" constant="375" id="CjY-y2-sUs"/>
                             <constraint firstItem="0lM-8y-jz7" firstAttribute="top" secondItem="3DW-pI-FoI" secondAttribute="bottom" constant="62" id="Ml9-13-kRV"/>
                             <constraint firstItem="0lM-8y-jz7" firstAttribute="top" secondItem="3vc-bE-FZX" secondAttribute="bottom" id="NJo-sz-dbW"/>
                             <constraint firstItem="hjP-o7-e6P" firstAttribute="leading" secondItem="cNS-7n-zAw" secondAttribute="leading" id="PDf-ny-s4u"/>
+                            <constraint firstAttribute="bottom" secondItem="rUC-wp-vYA" secondAttribute="bottom" constant="667" id="XY2-Nn-G2B"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3DW-pI-FoI" secondAttribute="trailing" constant="-16" id="aAS-6r-N6H"/>
                             <constraint firstItem="3DW-pI-FoI" firstAttribute="top" secondItem="LaR-ez-Pot" secondAttribute="bottom" constant="-2" id="bmf-cm-OsN"/>
+                            <constraint firstItem="rUC-wp-vYA" firstAttribute="top" secondItem="cNS-7n-zAw" secondAttribute="top" id="cNy-5d-cwt"/>
                             <constraint firstItem="3vc-bE-FZX" firstAttribute="top" secondItem="hjP-o7-e6P" secondAttribute="bottom" id="fCJ-ln-VfX"/>
                             <constraint firstItem="3DW-pI-FoI" firstAttribute="leading" secondItem="cNS-7n-zAw" secondAttribute="leadingMargin" constant="-16" id="fDL-uj-vTd"/>
                             <constraint firstItem="3vc-bE-FZX" firstAttribute="leading" secondItem="cNS-7n-zAw" secondAttribute="leading" id="gNj-iP-v2z"/>
+                            <constraint firstItem="rUC-wp-vYA" firstAttribute="leading" secondItem="3DW-pI-FoI" secondAttribute="leading" id="lb7-gk-Pb7"/>
                             <constraint firstItem="3vc-bE-FZX" firstAttribute="top" secondItem="hjP-o7-e6P" secondAttribute="bottom" id="mHJ-D4-rhk"/>
                             <constraint firstAttribute="trailing" secondItem="3vc-bE-FZX" secondAttribute="trailing" id="uFp-dx-QIK"/>
                         </constraints>
@@ -137,6 +190,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="attractionLabel2" destination="wvN-bZ-9xf" id="pjY-od-6fo"/>
+                        <outlet property="attractionLabel3" destination="rQf-fE-cDf" id="dsW-mQ-NLm"/>
                         <outlet property="redOutlineView" destination="hjP-o7-e6P" id="cBk-eQ-gHX"/>
                         <outlet property="somethingLabel" destination="KQj-UH-KIg" id="Ek9-FM-u3w"/>
                         <outlet property="userImageView" destination="kaN-mq-o0z" id="E5Z-ug-gBI"/>

@@ -27,11 +27,25 @@ class MessagesViewController: JSQMessagesViewController {
     func setupFirebase() {
         // *** STEP 2: SETUP FIREBASE
         ref = Firebase(url: "https://gowithme.firebaseio.com/")
-        //user = ref.authData
-        //println(user)
+        user = ref.authData
+        println(user)
         messagesRef = Firebase(url: "https://gowithme.firebaseio.com/messages")
         //sender = user!.providerData!["email"] as? NSString
-        sender = "Le Vu Huy" as NSString
+        var uid = user!.uid as String
+        println(uid)
+        
+        switch (uid) {
+            case "simplelogin:1":
+            sender = "Huy"
+            case "simplelogin:2":
+            sender = "Nikhil"
+            case "simplelogin:3":
+            sender = "Glen"
+        default:
+            sender = "Anon"
+        }
+        println("sender is \(sender)")
+        //sender = "Le Vu Huy" as NSString
         println(sender)
         // *** STEP 4: RECEIVE MESSAGES FROM FIREBASE (limited to latest 25 messages)
         messagesRef.queryLimitedToLast(25).observeEventType(FEventType.ChildAdded, withBlock: { (snapshot) in
@@ -98,6 +112,21 @@ class MessagesViewController: JSQMessagesViewController {
         automaticallyScrollsToMostRecentMessage = true
         navigationController?.navigationBar.topItem?.title = "Logout"
         
+        let myFirstButton = UIButton()
+        myFirstButton.setTitle("X", forState: .Normal)
+        myFirstButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        myFirstButton.frame = CGRectMake(10, 0, 50,50)
+        myFirstButton.addTarget(self, action: "pressed", forControlEvents: .TouchUpInside)
+        self.view.addSubview(myFirstButton)
+        
+        let showscanner = UIButton()
+        showscanner.setTitle("O", forState: .Normal)
+        showscanner.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        showscanner.frame = CGRectMake(10, 0, 50,1400)
+        showscanner.addTarget(self, action: "presentScanner", forControlEvents: .TouchUpInside)
+        self.view.addSubview(showscanner)
+
+        
         sender = (sender != nil) ? sender : "Anonymous"
         let profileImageUrl = user?.providerData["cachedUserProfile"]?["profile_image_url_https"] as? NSString
         if let urlString = profileImageUrl {
@@ -122,6 +151,15 @@ class MessagesViewController: JSQMessagesViewController {
         if ref != nil {
             ref.unauth()
         }
+    }
+    
+    func pressed() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func presentScanner() {
+        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("ScannerID") as UIViewController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     // ACTIONS

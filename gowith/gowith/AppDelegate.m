@@ -30,13 +30,13 @@
 - (void) updateRootViewController:(NSNotification *)notification {
     UIViewController *controller = nil;
     
-//    if ([Client sharedInstance].signedIn) {
+    if ([Client sharedInstance].signedIn) {
        controller = [[MCAppRouter sharedInstance] viewControllerMatchingRoute:@"carousel"];
-//    }
-//    else {
-//        controller = [[AMLoginViewController alloc] init];
-//    }
-//    
+    }
+    else {
+        controller = [[AMLoginViewController alloc] init];
+    }
+
     [UIView transitionWithView:self.window duration:notification ? 0.4 : 0 options:UIViewAnimationOptionTransitionFlipFromLeft animations: ^{
         self.window.rootViewController = controller;
     } completion:nil];

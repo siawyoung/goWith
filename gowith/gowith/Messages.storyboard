@@ -23,5 +23,54 @@
             </objects>
             <point key="canvasLocation" x="547" y="142"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="4zD-FB-eIE">
+            <objects>
+                <viewController storyboardIdentifier="ScannerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nnt-lV-I9M" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iqU-EL-FFO"/>
+                        <viewControllerLayoutGuide type="bottom" id="b13-uh-xWy"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.74999999999999978" contentMode="scaleToFill" id="RtG-Ll-0Av">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scanner" translatesAutoresizingMaskIntoConstraints="NO" id="KnW-57-a30">
+                                <rect key="frame" x="0.0" y="146" width="600" height="270"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the route you wish to take:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T08-EY-Zvk">
+                                <rect key="frame" x="174" y="67" width="298" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="298" id="TAS-N6-1CV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99036306142807007" green="0.93840986490249634" blue="0.93599313497543335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="KnW-57-a30" secondAttribute="trailing" id="BZ4-Ly-fb9"/>
+                            <constraint firstItem="KnW-57-a30" firstAttribute="top" secondItem="iqU-EL-FFO" secondAttribute="bottom" constant="126" id="Ky5-XK-B7r"/>
+                            <constraint firstItem="T08-EY-Zvk" firstAttribute="top" secondItem="iqU-EL-FFO" secondAttribute="bottom" constant="47" id="Qoh-WA-Za5"/>
+                            <constraint firstAttribute="centerX" secondItem="T08-EY-Zvk" secondAttribute="centerX" constant="-23" id="Zpf-R7-rpJ"/>
+                            <constraint firstItem="T08-EY-Zvk" firstAttribute="leading" secondItem="RtG-Ll-0Av" secondAttribute="leading" constant="174" id="cbo-55-Wfk"/>
+                            <constraint firstItem="b13-uh-xWy" firstAttribute="top" secondItem="KnW-57-a30" secondAttribute="bottom" constant="184" id="fPO-vr-fng"/>
+                            <constraint firstItem="KnW-57-a30" firstAttribute="leading" secondItem="RtG-Ll-0Av" secondAttribute="leading" id="fcs-R0-I9f"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cbo-55-Wfk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0N-sN-sZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1215" y="142"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="scanner" width="282" height="117"/>
+    </resources>
 </document>
